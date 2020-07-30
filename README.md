@@ -33,23 +33,23 @@ lost data from the TiddlerHistory.
 
 The TiddlyWiki downloaded as index.html that runs in the browser
 downloads (through the JSON API) a master list of all tiddlers and their
-metadata when the page first loads and then lazily fetches individual 
+metadata when the page first loads and then lazily fetches individual
 tiddler content on demand.
 
 ## Deployment
 
 Create an Google App Engine standard app and deploy with
 
-	appcfg.py -A your-app -V your-version update .
+	gcloud --project=your-app app deploy
 
 Then visit https://your-app.appspot.com/. As noted above, only admins
 will have access to the content.
 
 ## Plugins
 
-TiddlyWiki supports extension through plugins. 
+TiddlyWiki supports extension through plugins.
 Plugins need to be in the downloaded index.html, not lazily
-like other tiddlers. Therefore, installing a plugin means 
+like other tiddlers. Therefore, installing a plugin means
 updating a local copy of index.html and redeploying it to
 the server.
 
@@ -70,7 +70,7 @@ For some reason, no such special hack is needed for `$:/tags/Stylesheet` tiddler
 If you set Control Panel > Info > Basics > Default tiddlers by clicking
 “retain story ordering”, then the story list (the list of tiddlers shown on the page)
 is written to the server as it changes and is polled back from the server every 60 seconds.
-This means that if you have the web site open in two different browsers 
+This means that if you have the web site open in two different browsers
 (for example, at home and at work), changes to what you're viewing in one
 propagate to the other.
 
